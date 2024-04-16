@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  #grafana:
+  #  hostname: oct-grafana
+  #  container_name: oct-grafana
+  #  image: grafana/grafana-oss
+  #  network_mode: "host"
+  #  environment:
+  #    - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
+  #  volumes:
+  #    - oct-grafana:/var/lib/grafana
+  #    - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+  prometheus:
+    hostname: oct-prometheus
+    image: prom/prometheus
+    command: --storage.tsdb.retention.time=30d
+    network_mode: "host"
+    volumes:
+      - oct-prometheus:/prometheus
+      - ./prometheus:/etc/prometheus:ro
+  prometheus-snmp:
+    hostname: oct-prometheus-snmp
+    image: prom/snmp-exporter
+    network_mode: "host"
+  prometheus-ipmi:
+    hostname: oct-prometheus-ipmi
+    image: prometheuscommunity/ipmi-exporter-linux-amd64
+    command: --config.file /config.yml
+    network_mode: "host"
+    volumes:
+      - ./prometheus-ipmi/ipmi_remote.yml:/config.yml:ro
+volumes:
+  #oct-grafana:
+  oct-prometheus:
