@@ -13,7 +13,7 @@ services:
   prometheus:
     hostname: oct-prometheus
     image: prom/prometheus
-    command: --storage.tsdb.retention.time=30d
+    command: --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention.time=30d
     network_mode: "host"
     volumes:
       - oct-prometheus:/prometheus
