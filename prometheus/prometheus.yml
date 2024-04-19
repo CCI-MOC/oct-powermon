@@ -6,11 +6,16 @@ scrape_configs:
     static_configs:
       - targets:
         - 10.91.1.11
-        - 10.91.1.12
         - 10.91.1.21
-        - 10.91.1.22
         - 10.91.1.91
+        labels:
+          bus: 'A'
+      - targets:
+        - 10.91.1.12
+        - 10.91.1.22
         - 10.91.1.92
+        labels:
+          bus: 'B'
     metrics_path: /snmp
     params:
       module: [servertech_sentry3]
@@ -21,6 +26,560 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: 10.91.0.1:9116
+    metric_relabel_configs:
+      # Add CloudLab Node Labels
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;4
+        target_label: node
+        replacement: pc62
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;12
+        target_label: node
+        replacement: pc61
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;5
+        target_label: node
+        replacement: pc60
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;13
+        target_label: node
+        replacement: pc59
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;6
+        target_label: node
+        replacement: pc58
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;14
+        target_label: node
+        replacement: pc57
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;7
+        target_label: node
+        replacement: pc56
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;15
+        target_label: node
+        replacement: pc55
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;8
+        target_label: node
+        replacement: pc17
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];1;16
+        target_label: node
+        replacement: pc23
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;1
+        target_label: node
+        replacement: pc52
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;9
+        target_label: node
+        replacement: pc51
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;2
+        target_label: node
+        replacement: pc50
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;10
+        target_label: node
+        replacement: pc49
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;3
+        target_label: node
+        replacement: pc48
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;11
+        target_label: node
+        replacement: pc11
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;4
+        target_label: node
+        replacement: pc46
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;12
+        target_label: node
+        replacement: pc45
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;5
+        target_label: node
+        replacement: pc44
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;13
+        target_label: node
+        replacement: pc43
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;6
+        target_label: node
+        replacement: pc18
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;14
+        target_label: node
+        replacement: pc41
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;7
+        target_label: node
+        replacement: pc40
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;15
+        target_label: node
+        replacement: pc39
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;8
+        target_label: node
+        replacement: pc38
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];2;16
+        target_label: node
+        replacement: pc37
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;1
+        target_label: node
+        replacement: pc21
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;9
+        target_label: node
+        replacement: pc35
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;2
+        target_label: node
+        replacement: pc34
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;10
+        target_label: node
+        replacement: pc33
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;3
+        target_label: node
+        replacement: pc32
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;11
+        target_label: node
+        replacement: pc31
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;4
+        target_label: node
+        replacement: pc30
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;12
+        target_label: node
+        replacement: pc29
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;5
+        target_label: node
+        replacement: pc19
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;13
+        target_label: node
+        replacement: pc27
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;6
+        target_label: node
+        replacement: pc26
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.1[12];3;14
+        target_label: node
+        replacement: pc25
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;4
+        target_label: node
+        replacement: pc100
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;12
+        target_label: node
+        replacement: pc99
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;5
+        target_label: node
+        replacement: pc98
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;13
+        target_label: node
+        replacement: pc06
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;6
+        target_label: node
+        replacement: pc96
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;14
+        target_label: node
+        replacement: pc95
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;7
+        target_label: node
+        replacement: pc94
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;15
+        target_label: node
+        replacement: pc12
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;8
+        target_label: node
+        replacement: pc07
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];1;16
+        target_label: node
+        replacement: pc91
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;1
+        target_label: node
+        replacement: pc13
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;9
+        target_label: node
+        replacement: pc89
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;2
+        target_label: node
+        replacement: pc88
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;10
+        target_label: node
+        replacement: pc87
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;3
+        target_label: node
+        replacement: pc08
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;11
+        target_label: node
+        replacement: pc85
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;4
+        target_label: node
+        replacement: pc84
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;12
+        target_label: node
+        replacement: pc83
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;5
+        target_label: node
+        replacement: pc82
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;13
+        target_label: node
+        replacement: pc10
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;6
+        target_label: node
+        replacement: pc80
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;14
+        target_label: node
+        replacement: pc14
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;7
+        target_label: node
+        replacement: pc20
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;15
+        target_label: node
+        replacement: pc15
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;8
+        target_label: node
+        replacement: pc22
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];2;16
+        target_label: node
+        replacement: pc75
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;1
+        target_label: node
+        replacement: pc74
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;9
+        target_label: node
+        replacement: pc16
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;2
+        target_label: node
+        replacement: pc72
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;10
+        target_label: node
+        replacement: pc71
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;3
+        target_label: node
+        replacement: pc70
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;11
+        target_label: node
+        replacement: pc69
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;4
+        target_label: node
+        replacement: pc24
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;12
+        target_label: node
+        replacement: pc67
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;5
+        target_label: node
+        replacement: pc66
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;13
+        target_label: node
+        replacement: pc65
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;6
+        target_label: node
+        replacement: pc64
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.2[12];3;14
+        target_label: node
+        replacement: pc63
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];1;4
+        target_label: node
+        replacement: pc154
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];1;12
+        target_label: node
+        replacement: pc155
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];1;5
+        target_label: node
+        replacement: pc156
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];1;13
+        target_label: node
+        replacement: pc157
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];1;6
+        target_label: node
+        replacement: pc158
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];1;14
+        target_label: node
+        replacement: pc159
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];1;7
+        target_label: node
+        replacement: pc151
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];1;15
+        target_label: node
+        replacement: pc153
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];2;1
+        target_label: node
+        replacement: pc160
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];2;9
+        target_label: node
+        replacement: pc161
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];2;2
+        target_label: node
+        replacement: pc162
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];2;10
+        target_label: node
+        replacement: pc163
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];2;3
+        target_label: node
+        replacement: pc164
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];2;11
+        target_label: node
+        replacement: pc165
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];2;4
+        target_label: node
+        replacement: pc166
+        action: replace
+      - source_labels: ['instance','infeedIndex','outletIndex']
+        separator: ;
+        regex: 10.91.1.9[12];2;12
+        target_label: node
+        replacement: pc167
+        action: replace
 
   # Global exporter-level metrics
   - job_name: 'oct-prometheus-snmp'
@@ -29,103 +588,282 @@ scrape_configs:
 
   - job_name: 'oct-prometheus-ipmi'
     static_configs:
-      - targets:
-        - 10.0.1.1
-        - 10.0.1.2
-        - 10.0.1.3
-        - 10.0.1.4
-        - 10.0.1.6
-        - 10.0.1.7
-        - 10.0.1.8
-        - 10.0.1.10
-        - 10.0.1.11
-        - 10.0.1.12
-        - 10.0.1.13
-        - 10.0.1.14
-        - 10.0.1.15
-        - 10.0.1.16
-        - 10.0.1.17
-        - 10.0.1.18
-        - 10.0.1.19
-        - 10.0.1.20
-        - 10.0.1.21
-        - 10.0.1.22
-        - 10.0.1.23
-        - 10.0.1.24
-        - 10.0.1.100
-        - 10.0.1.101
-        - 10.0.1.102
-        - 10.0.1.103
-        - 10.0.1.104
-        - 10.0.1.105
-        - 10.0.1.106
-        - 10.0.1.107
-        - 10.0.1.108
-        - 10.0.1.109
-        - 10.0.1.110
-        - 10.0.1.111
-        - 10.0.1.112
-        - 10.0.1.113
-        - 10.0.1.114
-        - 10.0.1.115
-        - 10.0.2.0
-        - 10.0.2.1
-        - 10.0.2.2
-        - 10.0.2.4
-        - 10.0.2.5
-        - 10.0.2.6
-        - 10.0.2.7
-        - 10.0.2.8
-        - 10.0.2.9
-        - 10.0.2.10
-        - 10.0.2.12
-        - 10.0.2.13
-        - 10.0.2.14
-        - 10.0.2.15
-        - 10.0.2.16
-        - 10.0.2.18
-        - 10.0.2.19
-        - 10.0.2.20
-        - 10.0.2.21
-        - 10.0.2.23
-        - 10.0.2.24
-        - 10.0.2.25
-        - 10.0.2.26
-        - 10.0.2.27
-        - 10.0.2.30
-        - 10.0.2.31
-        - 10.0.2.32
-        - 10.0.2.33
-        - 10.0.2.34
-        - 10.0.2.35
-        - 10.0.2.36
-        - 10.0.2.37
-        - 10.0.3.0
-        - 10.0.3.1
-        - 10.0.3.2
-        - 10.0.3.3
-        - 10.0.3.4
-        - 10.0.3.6
-        - 10.0.3.7
-        - 10.0.3.8
-        - 10.0.3.9
-        - 10.0.3.11
-        - 10.0.3.12
-        - 10.0.3.17
-        - 10.0.3.19
-        - 10.0.3.20
-        - 10.0.3.21
-        - 10.0.3.22
-        - 10.0.3.24
-        - 10.0.3.25
-        - 10.0.3.26
-        - 10.0.3.28
-        - 10.0.3.31
-        - 10.0.3.32
-        - 10.0.3.33
-        - 10.0.3.35
-        - 10.0.3.36
-        - 10.0.3.37
+      - targets: [10.0.2.37]
+        labels:
+          node: 'pc62'
+      - targets: [10.0.2.36]
+        labels:
+          node: 'pc61'
+      - targets: [10.0.2.35]
+        labels:
+          node: 'pc60'
+      - targets: [10.0.2.34]
+        labels:
+          node: 'pc59'
+      - targets: [10.0.2.33]
+        labels:
+          node: 'pc58'
+      - targets: [10.0.2.32]
+        labels:
+          node: 'pc57'
+      - targets: [10.0.2.31]
+        labels:
+          node: 'pc56'
+      - targets: [10.0.2.30]
+        labels:
+          node: 'pc55'
+      - targets: [10.0.1.17]
+        labels:
+          node: 'pc17'
+      - targets: [10.0.1.23]
+        labels:
+          node: 'pc23'
+      - targets: [10.0.2.27]
+        labels:
+          node: 'pc52'
+      - targets: [10.0.2.26]
+        labels:
+          node: 'pc51'
+      - targets: [10.0.2.25]
+        labels:
+          node: 'pc50'
+      - targets: [10.0.2.24]
+        labels:
+          node: 'pc49'
+      - targets: [10.0.2.23]
+        labels:
+          node: 'pc48'
+      - targets: [10.0.1.11]
+        labels:
+          node: 'pc11'
+      - targets: [10.0.2.21]
+        labels:
+          node: 'pc46'
+      - targets: [10.0.2.20]
+        labels:
+          node: 'pc45'
+      - targets: [10.0.2.19]
+        labels:
+          node: 'pc44'
+      - targets: [10.0.2.18]
+        labels:
+          node: 'pc43'
+      - targets: [10.0.1.18]
+        labels:
+          node: 'pc18'
+      - targets: [10.0.2.16]
+        labels:
+          node: 'pc41'
+      - targets: [10.0.2.15]
+        labels:
+          node: 'pc40'
+      - targets: [10.0.2.14]
+        labels:
+          node: 'pc39'
+      - targets: [10.0.2.13]
+        labels:
+          node: 'pc38'
+      - targets: [10.0.2.12]
+        labels:
+          node: 'pc37'
+      - targets: [10.0.1.21]
+        labels:
+          node: 'pc21'
+      - targets: [10.0.2.10]
+        labels:
+          node: 'pc35'
+      - targets: [10.0.2.9]
+        labels:
+          node: 'pc34'
+      - targets: [10.0.2.8]
+        labels:
+          node: 'pc33'
+      - targets: [10.0.2.7]
+        labels:
+          node: 'pc32'
+      - targets: [10.0.2.6]
+        labels:
+          node: 'pc31'
+      - targets: [10.0.2.5]
+        labels:
+          node: 'pc30'
+      - targets: [10.0.2.4]
+        labels:
+          node: 'pc29'
+      - targets: [10.0.1.19]
+        labels:
+          node: 'pc19'
+      - targets: [10.0.2.2]
+        labels:
+          node: 'pc27'
+      - targets: [10.0.2.1]
+        labels:
+          node: 'pc26'
+      - targets: [10.0.2.0]
+        labels:
+          node: 'pc25'
+      - targets: [10.0.3.37]
+        labels:
+          node: 'pc100'
+      - targets: [10.0.3.36]
+        labels:
+          node: 'pc99'
+      - targets: [10.0.3.35]
+        labels:
+          node: 'pc98'
+      - targets: [10.0.1.6]
+        labels:
+          node: 'pc06'
+      - targets: [10.0.3.33]
+        labels:
+          node: 'pc96'
+      - targets: [10.0.3.32]
+        labels:
+          node: 'pc95'
+      - targets: [10.0.3.31]
+        labels:
+          node: 'pc94'
+      - targets: [10.0.1.12]
+        labels:
+          node: 'pc12'
+      - targets: [10.0.1.7]
+        labels:
+          node: 'pc07'
+      - targets: [10.0.3.28]
+        labels:
+          node: 'pc91'
+      - targets: [10.0.1.13]
+        labels:
+          node: 'pc13'
+      - targets: [10.0.3.26]
+        labels:
+          node: 'pc89'
+      - targets: [10.0.3.25]
+        labels:
+          node: 'pc88'
+      - targets: [10.0.3.24]
+        labels:
+          node: 'pc87'
+      - targets: [10.0.1.8]
+        labels:
+          node: 'pc08'
+      - targets: [10.0.3.22]
+        labels:
+          node: 'pc85'
+      - targets: [10.0.3.21]
+        labels:
+          node: 'pc84'
+      - targets: [10.0.3.20]
+        labels:
+          node: 'pc83'
+      - targets: [10.0.3.19]
+        labels:
+          node: 'pc82'
+      - targets: [10.0.1.10]
+        labels:
+          node: 'pc10'
+      - targets: [10.0.3.17]
+        labels:
+          node: 'pc80'
+      - targets: [10.0.1.14]
+        labels:
+          node: 'pc14'
+      - targets: [10.0.1.20]
+        labels:
+          node: 'pc20'
+      - targets: [10.0.1.15]
+        labels:
+          node: 'pc15'
+      - targets: [10.0.1.22]
+        labels:
+          node: 'pc22'
+      - targets: [10.0.3.12]
+        labels:
+          node: 'pc75'
+      - targets: [10.0.3.11]
+        labels:
+          node: 'pc74'
+      - targets: [10.0.1.16]
+        labels:
+          node: 'pc16'
+      - targets: [10.0.3.9]
+        labels:
+          node: 'pc72'
+      - targets: [10.0.3.8]
+        labels:
+          node: 'pc71'
+      - targets: [10.0.3.7]
+        labels:
+          node: 'pc70'
+      - targets: [10.0.3.6]
+        labels:
+          node: 'pc69'
+      - targets: [10.0.1.24]
+        labels:
+          node: 'pc24'
+      - targets: [10.0.3.4]
+        labels:
+          node: 'pc67'
+      - targets: [10.0.3.3]
+        labels:
+          node: 'pc66'
+      - targets: [10.0.3.2]
+        labels:
+          node: 'pc65'
+      - targets: [10.0.3.1]
+        labels:
+          node: 'pc64'
+      - targets: [10.0.3.0]
+        labels:
+          node: 'pc63'
+      - targets: [10.0.1.102]
+        labels:
+          node: 'pc154'
+      - targets: [10.0.1.103]
+        labels:
+          node: 'pc155'
+      - targets: [10.0.1.104]
+        labels:
+          node: 'pc156'
+      - targets: [10.0.1.105]
+        labels:
+          node: 'pc157'
+      - targets: [10.0.1.106]
+        labels:
+          node: 'pc158'
+      - targets: [10.0.1.107]
+        labels:
+          node: 'pc159'
+      - targets: [10.0.1.100]
+        labels:
+          node: 'pc151'
+      - targets: [10.0.1.101]
+        labels:
+          node: 'pc153'
+      - targets: [10.0.1.108]
+        labels:
+          node: 'pc160'
+      - targets: [10.0.1.109]
+        labels:
+          node: 'pc161'
+      - targets: [10.0.1.110]
+        labels:
+          node: 'pc162'
+      - targets: [10.0.1.111]
+        labels:
+          node: 'pc163'
+      - targets: [10.0.1.112]
+        labels:
+          node: 'pc164'
+      - targets: [10.0.1.113]
+        labels:
+          node: 'pc165'
+      - targets: [10.0.1.114]
+        labels:
+          node: 'pc166'
+      - targets: [10.0.1.115]
+        labels:
+          node: 'pc167'
     params:
       module: ['default']
     metrics_path: /ipmi
